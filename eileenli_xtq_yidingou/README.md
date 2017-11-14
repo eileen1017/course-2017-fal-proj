@@ -47,7 +47,7 @@ We first extracts the coordinates of every school from school database, and to c
 
 
 4. K-means Analysis for best hospital place:
-We use the k means algorithm to find the optimal hospital place to show where needs the hospital the most base on the rates of comfort, safety and convenience. 
+We use the k-means algorithm to find the optimal hospital place where needs the hospital the most base on the rates of comfort, safety and convenience. 
 
 
 
