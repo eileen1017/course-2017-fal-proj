@@ -18,8 +18,11 @@ Tianqi Xu, Lin Li, Yiding Ou
 
 # Process:
 1. Extracting data from databases:
+
 a). Comfort Section: we extract the coordinates of every entertainment from Entertainment database and coordinates of every restaurant from Restaurant database, and put them into a new dictionary.
+
 b). Safety Section: we extract the coordinates of every crime insident from Crime database, the coordinates of every car crash from Crash database, and the coordinates of hospitals from Hospital database, and put them into a new dictionary.
+
 c). Convenience Section: we extract the coordinates of every car crash from Crash database, the coordinates of every hubway from Hubway database, the coordinates of every traffic signals from Signals database and the coordinates of every MBTA from MBTA database, and put them into a new dictionary.
 
 2.	Data Relation to School:
