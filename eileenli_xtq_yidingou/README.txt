@@ -1,18 +1,38 @@
 Objective:
-Since Boston is a quite densely populated area in US, here will be many people and travelers. We are exploring the lifestyle in Boston. We would like to see whether a place is suitable for people to enjoy their lives around Boston. It is useful for both travelers and local people. It saves people a lot of times to ask their friends where is suitable and safe to visit. If people have some medical problem, they can also visit nearby medical centers. 
+Since Boston is a quite densely populated are in US, the quality of life is very important to everyone. We are exploring the rating of living around the schools in Boston by calculating the safety rate, the comfort rate, and the convenience rate. Our objective is to use k-mean to find the area that needs a hospital the most. Our safety rate will include data from crime, crash and hospitals. Our comfort rate will include data from entertainment and restaurants. Our convenience rate will include data from crash, hubway, traffic signals and MBTA. 
+
+Group Members:
+Tianqi Xu, Lin Li, Yiding Ou
 
 Databases:
-1. Crime: https://data.cityofboston.gov/resource/ufcx-3fdn.json
-2. Hospital: https://data.cityofboston.gov/resource/u6fv-m8v4.json
-3. Entertainment: http://datamechanics.io/data/eileenli_yidingou/new.json (Originally from:https://data.boston.gov/export/792/0c5/7920c501-b410-4a9c-85ab-51338c9b34af.json)
-4. Health:http://datamechanics.io/data/eileenli_yidingou/Health.json
-5. Restaurant:http://datamechanics.io/data/eileenli_yidingou/Restaurant.json
+1. Crash: http://datamechanics.io/data/eileenli_xtq_yidingou/crash.json
+2. MTBA: http://datamechanics.io/data/cyung20_kwleung/mbta-t-stops.json
+3. Hubway: http://datamechanics.io/data/eileenli_xtq_yidingou/Hubway_Stations.geojson
+4. Schools: http://datamechanics.io/data/eileenli_xtq_yidingou/Colleges_and_Universities.geojson
+5. Restaurants: http://datamechanics.io/data/eileenli_xtq_yidingou/Restaurant.json
+6. Crime: http://datamechanics.io/data/eileenli_xtq_yidingou/crime.json
+7. Hospitals: http://datamechanics.io/data/eileenli_xtq_yidingou/hospital.json
+8. Entertainment: http://datamechanics.io/data/eileenli_xtq_yidingou/new.json
+9. Traffic signals: http://datamechanics.io/data/eileenli_xtq_yidingou/Traffic_Signals.geojson
 
 
-Combining Data:
-1. Ent_Crime: we use the databases Entertainment and Crime for merging. We extracted the businessname and coordinates from Entertainment and coordinates from Crime. We calculate the distances from business and the place where crime takes place and check whether the distance is less or equal to 1.5 miles. If it is, counts it under the key businessname in the new merged database. We can check if the entertainment’s surrounding is safe or not for people to visit.
+Process:
+1. Extracting data from databases:
+a). Comfort Section: we extract the coordinates of every entertainment from Entertainment database and coordinates of every restaurant from Restaurant database, and put them into a new dictionary.
+b). Safety Section: we extract the coordinates of every crime insident from Crime database, the coordinates of every car crash from Crash database, and the coordinates of hospitals from Hospital database, and put them into a new dictionary.
+c). Convenience Section: we extract the coordinates of every car crash from Crash database, the coordinates of every hubway from Hubway database, the coordinates of every traffic signals from Signals database and the coordinates of every MBTA from MBTA database, and put them into a new dictionary.
 
-2. mergeEHzip_name: We use the databases Entertainment and Hospitals for merging for this part.We extract the zip code and businessname from Entertainment and extract the zip code and hospital name from Hospital database. Check if their zip code matches and if they match we will put them into a new merged database under the key zip code. This basically helps people to check whether there is a hospital nearby an entertainment. If they injury, they can go there immediately, especially for travelers who are not locals.
+2.	Data Relation to School:
+We first extracts the coordinates of every school from school database, and to calculate the distance from every coordinate of entertainment, restaurant, crime, crash, hospitals, hubway, traffic signals and MBTA. Then we will find the coordinates of those places that are within 2 miles from each school and put them into a new disctionary called "schoolfinal" such as {"school": i["properties"]["Name"],"properties": [{"hospital": hospital},{"crime": crime},{"crash": crash},{"restaurant": restaurant},{"entertainment": entertainment},{"hubway": hubway},{"traffic signal": signal},{"MBTA": MBTA},{"safety": (2000 + hospital*2 - crime*2 - crash) / 100},{"comfort": (restaurant + entertainment) / 100},{"traffic": (1500 + MBTA + hubway - signal - crash * 2) / 100}]}. 
 
-3. HealthRestaurant:We use the database Health and Restaurant for merging this part. We get the coordinates and Businessname from Restaurant and the coordinates and health center name from health database.With the coordinates of health center and restaurants, we can find the number of restaurants within walking distance of a hospital, which we believe is 1.5 miles. This dataset can help people find some restaurant after they go to health center, or visiting a patient.
+3.	Statistics Relation to School:
+
+
+
+
+4. K-means Analysis for best hospital place:
+We use the k means algorithm to find the optimal hospital place to show where needs the hospital the most base on the rates of comfort, safety and convenience. 
+
+
+
  
