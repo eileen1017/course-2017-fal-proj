@@ -1,10 +1,10 @@
-Objective:
+# Objective:
 Since Boston is a quite densely populated are in US, the quality of life is very important to everyone. We are exploring the rating of living around the schools in Boston by calculating the safety rate, the comfort rate, and the convenience rate. Our objective is to use k-mean to find the area that needs a hospital the most. Our safety rate will include data from crime, crash and hospitals. Our comfort rate will include data from entertainment and restaurants. Our convenience rate will include data from crash, hubway, traffic signals and MBTA. 
 
-Group Members:
+# Group Members:
 Tianqi Xu, Lin Li, Yiding Ou
 
-Databases:
+# Databases:
 1. Crash: http://datamechanics.io/data/eileenli_xtq_yidingou/crash.json
 2. MTBA: http://datamechanics.io/data/cyung20_kwleung/mbta-t-stops.json
 3. Hubway: http://datamechanics.io/data/eileenli_xtq_yidingou/Hubway_Stations.geojson
@@ -16,7 +16,7 @@ Databases:
 9. Traffic signals: http://datamechanics.io/data/eileenli_xtq_yidingou/Traffic_Signals.geojson
 
 
-Process:
+# Process:
 1. Extracting data from databases:
 a). Comfort Section: we extract the coordinates of every entertainment from Entertainment database and coordinates of every restaurant from Restaurant database, and put them into a new dictionary.
 b). Safety Section: we extract the coordinates of every crime insident from Crime database, the coordinates of every car crash from Crash database, and the coordinates of hospitals from Hospital database, and put them into a new dictionary.
