@@ -25,6 +25,8 @@ b). Safety Section: we extract the coordinates of every crime insident from Crim
 
 c). Convenience Section: we extract the coordinates of every car crash from Crash database, the coordinates of every hubway from Hubway database, the coordinates of every traffic signals from Signals database and the coordinates of every MBTA from MBTA database, and put them into a new dictionary.
 
+
+
 2.	Data Relation to School:
 We first extracts the coordinates of every school from school database, and to calculate the distance from every coordinate of entertainment, restaurant, crime, crash, hospitals, hubway, traffic signals and MBTA. Then we will find the coordinates of those places that are within 2 miles from each school and put them into a new disctionary called "schoolfinal" such as {
                 "school": i["properties"]["Name"],
@@ -35,7 +37,11 @@ We first extracts the coordinates of every school from school database, and to c
                 {"traffic": traffic}]
                 }.
 
+
+
 3.	Statistics Relation to School:
+
+
 
 
 
