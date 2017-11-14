@@ -6,7 +6,7 @@ Tianqi Xu, Lin Li, Yiding Ou
 
 # Databases:
 1. Crash: http://datamechanics.io/data/eileenli_xtq_yidingou/crash.json
-2. MTBA: http://datamechanics.io/data/cyung20_kwleung/mbta-t-stops.json
+2. MBTA: http://datamechanics.io/data/cyung20_kwleung/mbta-t-stops.json
 3. Hubway: http://datamechanics.io/data/eileenli_xtq_yidingou/Hubway_Stations.geojson
 4. Schools: http://datamechanics.io/data/eileenli_xtq_yidingou/Colleges_and_Universities.geojson
 5. Restaurants: http://datamechanics.io/data/eileenli_xtq_yidingou/Restaurant.json
@@ -23,7 +23,14 @@ b). Safety Section: we extract the coordinates of every crime insident from Crim
 c). Convenience Section: we extract the coordinates of every car crash from Crash database, the coordinates of every hubway from Hubway database, the coordinates of every traffic signals from Signals database and the coordinates of every MBTA from MBTA database, and put them into a new dictionary.
 
 2.	Data Relation to School:
-We first extracts the coordinates of every school from school database, and to calculate the distance from every coordinate of entertainment, restaurant, crime, crash, hospitals, hubway, traffic signals and MBTA. Then we will find the coordinates of those places that are within 2 miles from each school and put them into a new disctionary called "schoolfinal" such as {"school": i["properties"]["Name"],"properties": [{"hospital": hospital},{"crime": crime},{"crash": crash},{"restaurant": restaurant},{"entertainment": entertainment},{"hubway": hubway},{"traffic signal": signal},{"MBTA": MBTA},{"safety": (2000 + hospital*2 - crime*2 - crash) / 100},{"comfort": (restaurant + entertainment) / 100},{"traffic": (1500 + MBTA + hubway - signal - crash * 2) / 100}]}. 
+We first extracts the coordinates of every school from school database, and to calculate the distance from every coordinate of entertainment, restaurant, crime, crash, hospitals, hubway, traffic signals and MBTA. Then we will find the coordinates of those places that are within 2 miles from each school and put them into a new disctionary called "schoolfinal" such as {
+                "school": i["properties"]["Name"],
+                "properties": [
+                {"coordinates": i["geometry"]["coordinates"]},
+                {"safety": safety},
+                {"comfort": comfort},
+                {"traffic": traffic}]
+                }.
 
 3.	Statistics Relation to School:
 
