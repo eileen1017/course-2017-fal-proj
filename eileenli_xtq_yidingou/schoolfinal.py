@@ -268,47 +268,6 @@ class schoolfinal(dml.Algorithm):
         print(mb_sc)
 
 
-
-
-
-
-        # en_cord = {}
-        # l = []
-        # for k in EN:
-        #     for i in k:
-        #         if i == 'businessname' or i == 'location':
-        #             try:
-        #                 nt = k['location'].strip("()").split(",")
-        #                 l = [float(nt[1]),float(nt[0])]
-        #                 en_cord.setdefault(k['businessname'],l).append()
-        #             except:
-        #                 pass
-
-        # result = []
-        # for k,v in en_cord.items():
-        #     if v != 'NULL':
-        #         try:
-        #             result.append((k,v))
-        #         except KeyError:
-        #             result == result
-        # en_cord = dict(result)
-
-
-
-        # crime_cord = []
-        # for key in CR:
-        #     for i in key['location']:
-        #         if i == 'coordinates':
-        #             try:
-        #                 crime_cord.append((key['location']['coordinates']))
-                        
-        #             except:
-        #                 pass
-        # all_cord = cro(en_cord,crime_cord)
-        # all_cord = comb(all_cord)
-        # re_cord = counter(all_cord)
-
-
         repo.dropCollection("schoolfinal")
         repo.createCollection("schoolfinal")
 
